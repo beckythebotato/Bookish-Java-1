@@ -1,7 +1,5 @@
 package org.softwire.training.bookish;
 
-import org.jdbi.v3.core.Jdbi;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,14 +8,17 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        String hostname = "localhost";
-        String database = "bookish";
-        String user = "bookish";
-        String password = "bookish";
-        String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
+//        String hostname = "localhost";
+//        String database = "bookish";
+//        String user = "bookish";
+//        String password = "bookish";
+//        String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
+//
+//        jdbcMethod(connectionString);
+//        jdbiMethod(connectionString);
 
-        jdbcMethod(connectionString);
-        jdbiMethod(connectionString);
+        ReadEvaluatePrint.Loop();
+
     }
 
     private static void jdbcMethod(String connectionString) throws SQLException {
@@ -39,7 +40,7 @@ public class Main {
         // See this page for details: http://jdbi.org
         // Use the "Book" class that we've created for you (in the models.database folder)
 
-        Jdbi jdbi = Jdbi.create(connectionString);
+        //Jdbi jdbi = Jdbi.create(connectionString);
 
 
 
