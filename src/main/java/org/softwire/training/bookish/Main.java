@@ -1,6 +1,7 @@
 package org.softwire.training.bookish;
 
 import org.jdbi.v3.core.Jdbi;
+import org.softwire.training.bookish.models.database.Book;
 import org.softwire.training.bookish.models.database.User;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException 
+    public static void main(String[] args) throws SQLException{
         
         String hostname = "localhost";
         String database = "bookish";
@@ -45,7 +46,7 @@ public class Main {
 
         Connection connection = DriverManager.getConnection(connectionString);
 
-        //Jdbi jdbi = Jdbi.create(connectionString);
+        Jdbi jdbi = Jdbi.create(connectionString);
 
         return jdbi;
     }
@@ -69,6 +70,22 @@ public class Main {
 
     }
 
+    static List<Book> getBooks(Jdbi jdbi) {
+
+
+
+        return jdbi.withHandle(handle ->
+
+                handle.createQuery("Select * FROM books")
+                        .mapToBean(Book.class)
+                        .list()
+
+
+        );
+
+
+
+    }
 
 
 

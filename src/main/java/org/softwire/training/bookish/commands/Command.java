@@ -4,4 +4,5 @@ import java.util.HashMap;
 
 public interface Command {
     public void Execute(String input);
+
 }
