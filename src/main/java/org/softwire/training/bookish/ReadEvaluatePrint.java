@@ -1,0 +1,37 @@
+package org.softwire.training.bookish;
+
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class ReadEvaluatePrint {
+
+    public static void Loop() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("View available commands with 'help'");
+
+            while (true) {
+
+                System.out.print(">>> ");
+                String rawInput = scanner.nextLine();
+                String[] input = rawInput.split(" ", 2);
+
+                if (input.length == 1) input = new String[]{input[0], ""};
+
+                try {
+                    Class<?> commandClass = Class.forName("org.softwire.training.bookish.commands." + input[0].substring(0, 1).toUpperCase() + input[0].substring(1).toLowerCase());
+                    Object commandInstance = commandClass.newInstance();
+                    Method m = commandClass.getDeclaredMethod("Execute", String.class);
+                    m.invoke(commandInstance, rawInput);
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                    System.out.println("Invalid command, type 'Help' to see available commands  :)");
+                }
+            }
+
+    }
+
+}
