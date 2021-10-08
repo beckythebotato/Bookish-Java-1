@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ReadEvaluatePrint {
 
-    public static void Loop() {
+    public static void Loop(Jdbi jdbi) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("View available commands with 'help'");
 
@@ -22,8 +22,8 @@ public class ReadEvaluatePrint {
                 try {
                     Class<?> commandClass = Class.forName("org.softwire.training.bookish.commands." + input[0].substring(0, 1).toUpperCase() + input[0].substring(1).toLowerCase());
                     Object commandInstance = commandClass.newInstance();
-                    Method m = commandClass.getDeclaredMethod("Execute", String.class);
-                    m.invoke(commandInstance, rawInput);
+                    Method m = commandClass.getDeclaredMethod("Execute", String.class, Jdbi.class);
+                    m.invoke(commandInstance, rawInput, jdbi);
 
                 } catch (Exception e) {
 

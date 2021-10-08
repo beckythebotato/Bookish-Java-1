@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException{
+    public static void main(String[] args) throws SQLException {
         
         String hostname = "localhost";
         String database = "bookish";
@@ -21,7 +21,7 @@ public class Main {
         String password = "bookish";
         String connectionString = "jdbc:mysql://" + hostname + "/" + database + "?user=" + user + "&password=" + password + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT&useSSL=false";
 
-        ReadEvaluatePrint.Loop();
+        ReadEvaluatePrint.Loop(jdbiMethod(connectionString));
   
         //jdbcMethod(connectionString);
         getUsers(jdbiMethod(connectionString)).forEach(u->{System.out.println(u);} );
