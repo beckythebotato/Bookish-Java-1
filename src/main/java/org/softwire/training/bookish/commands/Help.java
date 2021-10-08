@@ -1,4 +1,5 @@
 package org.softwire.training.bookish.commands;
+import org.jdbi.v3.core.Jdbi;
 
 public class Help implements Command {
     @Override
